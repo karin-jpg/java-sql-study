@@ -7,5 +7,7 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="/home/karin/Downloads/mysql-connector-j_8.0.32-1ubuntu22.10_all/usr/share/java/mysql-connector-j-8.0.32.jar"/>
+	<classpathentry kind="lib" path="/home/karin/Downloads/c3p0-JARs/c3p0-0.9.5.4.jar"/>
+	<classpathentry kind="lib" path="/home/karin/Downloads/c3p0-JARs/mchange-commons-java-0.2.16.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
