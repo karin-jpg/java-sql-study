@@ -1,6 +1,7 @@
 package virtualShop;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -12,12 +13,14 @@ public class TestInsert {
 		ConnectionFactory connectionFactory = new ConnectionFactory();
 		Connection connection = connectionFactory.getConnection();
 		
-		Statement stm = connection.createStatement();
-		stm.execute("INSERT INTO product (name, description) VALUES ('Salém', 'gato travesso')", Statement.RETURN_GENERATED_KEYS);
+		PreparedStatement stm = 
+				connection.prepareStatement("INSERT INTO product (name, description) VALUES ('Salém', 'a cat')", Statement.RETURN_GENERATED_KEYS);
+		
+		stm.execute();
 		ResultSet result = stm.getGeneratedKeys();
 		
 		while(result.next()) {
-			System.out.println("ID criado foi: " + result.getInt(1));
+			System.out.println("Created ID was: " + result.getInt(1));
 		}
 		
 		connection.close();

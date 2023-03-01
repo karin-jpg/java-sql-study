@@ -1,6 +1,7 @@
 package virtualShop;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -13,8 +14,9 @@ public class TestShowProducts {
 		ConnectionFactory connectionFactory = new ConnectionFactory();
 		Connection connection = connectionFactory.getConnection();
 		
-		Statement stm = connection.createStatement();
-		stm.execute("Select * from product");
+		PreparedStatement stm = 
+				connection.prepareStatement("Select * from product");
+		stm.execute();
 		ResultSet result = stm.getResultSet();
 		
 		while(result.next()) {
