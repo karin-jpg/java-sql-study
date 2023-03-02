@@ -1,15 +1,13 @@
 package br.com.karin.jdbc.modelo;
 
 import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
+import java.util.List;
 
 import br.com.karin.jdbc.ConnectionFactory;
 import br.com.karin.jdbc.dao.ProductDAO;
 
-public class TestInsertWithProduct {
+public class TestProductDAO {
 
 	public static void main(String[] args) throws SQLException {
 
@@ -20,7 +18,11 @@ public class TestInsertWithProduct {
 			ProductDAO productDAO = new ProductDAO(connection);
 			productDAO.save(product);
 			
-			System.out.println(product);
+			List<Product> produtos = productDAO.list();
+			
+			produtos.stream().forEach(produto -> {
+				System.out.println(produto);
+			});
 
 		}
 
