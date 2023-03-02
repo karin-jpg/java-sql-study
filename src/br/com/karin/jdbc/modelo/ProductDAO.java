@@ -6,11 +6,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class PersistenceProduct {
+public class ProductDAO {
 
 	private Connection connection;
 	
-	public PersistenceProduct(Connection connection) {
+	public ProductDAO(Connection connection) {
 		this.connection = connection;
 	}
 	

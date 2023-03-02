@@ -17,7 +17,7 @@ public class TestInsertWithProduct {
 		try (Connection connection = new ConnectionFactory().getConnection()) {
 			connection.setAutoCommit(false);
 			
-			new PersistenceProduct(connection).saveProduct(product);
+			new ProductDAO(connection).saveProduct(product);
 			
 			System.out.println(product);
 
