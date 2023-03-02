@@ -16,9 +16,9 @@ public class TestInsertWithProduct {
 		Product product = new Product("Xbox", "A video game");
 
 		try (Connection connection = new ConnectionFactory().getConnection()) {
-			connection.setAutoCommit(false);
 			
-			new ProductDAO(connection).saveProduct(product);
+			ProductDAO productDAO = new ProductDAO(connection);
+			productDAO.save(product);
 			
 			System.out.println(product);
 
