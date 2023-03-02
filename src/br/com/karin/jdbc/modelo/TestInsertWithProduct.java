@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import br.com.karin.jdbc.ConnectionFactory;
+import br.com.karin.jdbc.dao.ProductDAO;
 
 public class TestInsertWithProduct {
 

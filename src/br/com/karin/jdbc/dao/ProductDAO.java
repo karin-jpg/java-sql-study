@@ -1,10 +1,12 @@
-package br.com.karin.jdbc.modelo;
+package br.com.karin.jdbc.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+import br.com.karin.jdbc.modelo.Product;
 
 public class ProductDAO {
 
