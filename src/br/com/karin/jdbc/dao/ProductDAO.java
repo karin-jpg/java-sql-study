@@ -5,20 +5,24 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import br.com.karin.jdbc.modelo.Product;
 
 public class ProductDAO {
 
 	private Connection connection;
-	
+
 	public ProductDAO(Connection connection) {
 		this.connection = connection;
 	}
-	
-	public void saveProduct(Product product) throws SQLException {
-		
+
+	public void save(Product product) throws SQLException {
+
 		String sql = "INSERT INTO product (name, description) VALUES (?, ?)";
+
+		connection.setAutoCommit(false);
 
 		try (PreparedStatement stm = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 
@@ -38,6 +42,28 @@ public class ProductDAO {
 			exception.printStackTrace();
 			connection.rollback();
 		}
+
+	}
+
+	public List<Product> list() throws SQLException {
+		List<Product> produtos = new ArrayList<Product>();
+
+		String sql = "SELECT * FROM product";
+
+		try (PreparedStatement stm = connection.prepareStatement(sql)) {
+
+			stm.execute();
+
+			try (ResultSet result = stm.getResultSet()) {
+				while (result.next()) {
+					Product product = new Product(result.getInt("id"), result.getString("name"),
+							result.getString("description"));
+
+					produtos.add(product);
+				}
+			}
+		}
+		return produtos;
 
 	}
 }
