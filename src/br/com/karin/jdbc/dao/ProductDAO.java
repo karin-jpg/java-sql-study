@@ -20,7 +20,7 @@ public class ProductDAO {
 
 	public void save(Product product) throws SQLException {
 
-		String sql = "INSERT INTO product (name, description) VALUES (?, ?)";
+		String sql = "INSERT INTO products (name, description) VALUES (?, ?)";
 
 		connection.setAutoCommit(false);
 
@@ -48,7 +48,7 @@ public class ProductDAO {
 	public List<Product> list() throws SQLException {
 		List<Product> produtos = new ArrayList<Product>();
 
-		String sql = "SELECT * FROM product";
+		String sql = "SELECT * FROM products";
 
 		try (PreparedStatement stm = connection.prepareStatement(sql)) {
 
