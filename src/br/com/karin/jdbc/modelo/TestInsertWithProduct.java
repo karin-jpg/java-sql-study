@@ -16,26 +16,8 @@ public class TestInsertWithProduct {
 
 		try (Connection connection = new ConnectionFactory().getConnection()) {
 			connection.setAutoCommit(false);
-			String sql = "INSERT INTO product (name, description) VALUES (?, ?)";
-
-			try (PreparedStatement stm = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-
-				stm.setString(1, product.getName());
-				stm.setString(2, product.getDescription());
-
-				stm.execute();
-				connection.commit();
-
-				try (ResultSet result = stm.getGeneratedKeys()) {
-					while (result.next()) {
-						product.setId(result.getInt(1));
-					}
-				}
-
-			} catch (Exception exception) {
-				exception.printStackTrace();
-				connection.rollback();
-			}
+			
+			new PersistenceProduct(connection).saveProduct(product);
 			
 			System.out.println(product);
 
