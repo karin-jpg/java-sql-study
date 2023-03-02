@@ -11,20 +11,18 @@ public class TestProductDAO {
 
 	public static void main(String[] args) throws SQLException {
 
-		Product product = new Product("Xbox", "A video game");
+		Product product = new Product("Notebook", "A computer");
 
 		try (Connection connection = new ConnectionFactory().getConnection()) {
-			
+
 			ProductDAO productDAO = new ProductDAO(connection);
 			productDAO.save(product);
-			
-			List<Product> produtos = productDAO.list();
-			
-			produtos.stream().forEach(produto -> {
-				System.out.println(produto);
+
+			List<Product> products = productDAO.list();
+
+			products.stream().forEach(p -> {
+				System.out.println(p);
 			});
-
 		}
-
 	}
 }
