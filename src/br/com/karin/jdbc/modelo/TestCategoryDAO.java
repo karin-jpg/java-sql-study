@@ -16,11 +16,22 @@ public class TestCategoryDAO {
 		try (Connection connection = new ConnectionFactory().getConnection()) {
 			
 			CategoryDAO categoryDAO = new CategoryDAO(connection);
-			categoryDAO.save(category);
-			List<Category> categories = categoryDAO.list();
+//			categoryDAO.save(category);
+//			List<Category> categories = categoryDAO.list();
+//			
+//			categories.stream().forEach(c -> {
+//				System.out.println(c);
+//			});
 			
-			categories.stream().forEach(c -> {
+			
+			List<Category> categoriesWithProducts = categoryDAO.listWithProducts();
+			
+			categoriesWithProducts.stream().forEach(c -> {
 				System.out.println(c);
+					c.getProducts().stream().forEach(p -> {
+						System.out.println(p);
+					});
+				System.out.println();
 			});
 
 		}

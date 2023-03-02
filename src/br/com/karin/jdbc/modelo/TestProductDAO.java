@@ -11,7 +11,7 @@ public class TestProductDAO {
 
 	public static void main(String[] args) throws SQLException {
 
-		Product product = new Product("Notebook", "A computer");
+		Product product = new Product("Shrek", "A good thing to watch");
 
 		try (Connection connection = new ConnectionFactory().getConnection()) {
 
