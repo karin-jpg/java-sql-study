@@ -1,4 +1,4 @@
-package virtualShop;
+package br.com.karin.jdbc;
 
 import java.sql.Connection;
 import java.sql.SQLException;
