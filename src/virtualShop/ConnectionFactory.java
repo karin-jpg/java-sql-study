@@ -18,13 +18,14 @@ public class ConnectionFactory {
 		comboPooledDataSource.setUser("virtual_shop_adm");
 		comboPooledDataSource.setPassword("1234");
 		
+		comboPooledDataSource.setMaxPoolSize(15);
+		
 		this.dataSource = comboPooledDataSource;
 	}
 
 	public Connection getConnection() throws SQLException {
 
-		return DriverManager.getConnection("jdbc:mysql://localhost/virtual_shop?useTimezone=true&serverTimezon=UTC",
-				"virtual_shop_adm", "1234");
+		return this.dataSource.getConnection();
 
 	}
 
